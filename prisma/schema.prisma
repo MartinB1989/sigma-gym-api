@@ -117,11 +117,11 @@ model ClassSchedule {
   id          String    @id @default(uuid())
   classId     String
   weekDay     WeekDay
-  startTime   DateTime  // Hora de inicio
-  endTime     DateTime  // Hora de fin
+  startTime   String    @db.VarChar(5) // Formato HH:MM
+  endTime     String    @db.VarChar(5) // Formato HH:MM
   active      Boolean   @default(true)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   class       ClassName @relation(fields: [classId], references: [id])
-  attendances Attendance[] // Opcional: para tracking específico por horario
+  attendances Attendance[]
 }
